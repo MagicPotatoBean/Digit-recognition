@@ -7,22 +7,21 @@ fn main() {
         &include_bytes!("../train-labels")[..],
         &include_bytes!("../train-images")[..],
     );
-    for pair in dataset.data {
-        let (image, label) = (pair.0, pair.1);
-        println!("image {label}");
-        for row in image.data {
-            for pixel in row {
-                print!(
-                    "{}",
-                    "  ".on(Color::Rgb {
-                        r: pixel,
-                        g: pixel,
-                        b: pixel,
-                    })
-                );
-            }
-            println!()
+    let pair = dataset[1].clone();
+    let (image, label) = (pair.0, pair.1);
+    println!("image {label}");
+    for row in image.data {
+        for pixel in row {
+            print!(
+                "{}",
+                "  ".on(Color::Rgb {
+                    r: pixel,
+                    g: pixel,
+                    b: pixel,
+                })
+            );
         }
-        todo!("neural network stuff");
+        println!()
     }
+    todo!("neural network stuff");
 }

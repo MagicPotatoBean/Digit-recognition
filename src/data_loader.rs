@@ -2,7 +2,7 @@ use std::{
     io::Read,
     ops::{Index, IndexMut},
 };
-
+#[derive(Clone, Copy, PartialEq, Eq, Debug)]
 pub struct Image<PixelType> {
     pub data: [[PixelType; 28]; 28],
 }
@@ -17,6 +17,7 @@ impl<PixelType> IndexMut<(usize, usize)> for Image<PixelType> {
         &mut self.data[index.0][index.1]
     }
 }
+#[derive(Clone, PartialEq, Eq, Debug)]
 pub struct ImageSet<PixelType, LabelType> {
     pub data: Vec<(Image<PixelType>, LabelType)>,
 }
